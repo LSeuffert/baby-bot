@@ -1,11 +1,12 @@
 import asyncio
 from .config import Config
-import discord
+from discord.ext import commands
 
-class BabyBot(discord.Client):
+class BabyBot(commands.Bot):
     def __init__(self):
         self.config = Config()
-        super().__init__()
+        super().__init__(command_prefix=self.config.prefix)
+        self.description="hello"
         
     def run(self):
         try:
@@ -18,3 +19,4 @@ class BabyBot(discord.Client):
         print(self.user.name)
         print(self.user.id)
         print('------')
+ 
